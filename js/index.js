@@ -14,6 +14,8 @@ const audio = new Audio()
 
 isGameOn = false;
 
+const artBoard = document.getElementById('art-board');
+
 function handleKeyboardButtonPress(event){
     if(isGameOn == false) return;
     const playerPressed = event.key;
@@ -82,8 +84,14 @@ function handleKeyboardButtonPress(event){
         audio.src = "../audio/Wrong.mp3";
         audio.play();
 
+
         const currentLife = getTextElementValueById('current-life');
         const updatedLife = currentLife - 1;
+
+        const updatedLifeParcentage = (updatedLife / 5) * 100;
+        artBoard.style.background =`Linear-gradient(#FFFFFFB3 ${updatedLifeParcentage}%, red)` ;
+
+
         setTextElementValueById('current-life', updatedLife);
 
 
@@ -147,4 +155,6 @@ function gameOver(){
     removeBackgroundColorById(currentAlphabet);
 
     isGameOn = false;
+
+    artBoard.style.background = 'Linear-gradient(#FFFFFFB3 100%, red)';
 }
