@@ -100,6 +100,19 @@
                 <p>Practice will make you Pro</p>
             </div>
         </section>
+
+        <!-- added tha modal section -->
+        <section id="modal-box" class="fixed w-full h-full top-0 bg-black opacity-90 justify-center items-cente flex">
+            <!-- You can open the modal using ID.showModal() method -->
+            <div class="bg-purple-900 text-white px-4 py-4 rounded w-1/5 h-1/5 relative top-56">
+                <button onclick="modalClose()" class="absolute top-2 right-2 rounded-full border-2 border-solid border-white w-9 h-9 text-xl flex items-center justify-center hover:bg-white hover:bg-opacity-30">
+                    x
+                </button>
+                <h2 class="mb-4 text-2xl font-bold">Hello</h2>
+                <p class="text-lg font-medium">Press Esc or click x button to close</p>
+            </div>
+        </section>
+
     </main>
     <script src="js/index.js"></script>
     <script src="js/utility.js"></script>
