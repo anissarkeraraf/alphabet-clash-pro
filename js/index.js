@@ -10,7 +10,12 @@
 //     playGroundSection.classList.remove('hidden')
 // }
 
+const audio = new Audio()
+
+isGameOn = false;
+
 function handleKeyboardButtonPress(event){
+    if(isGameOn == false) return;
     const playerPressed = event.key;
     console.log(playerPressed)
 
@@ -43,6 +48,10 @@ function handleKeyboardButtonPress(event){
     // check right or wrong
     if(playerPressed === expectedAlphabet){
         console.log('Your get a point')
+
+
+        audio.src = "../audio/Right.mp3";
+        audio.play();
     
         const currentScore = getTextElementValueById('current-score')
         console.log(currentScore)
@@ -69,6 +78,9 @@ function handleKeyboardButtonPress(event){
         continueGame();
     }else{
         console.log('dhur miya.... Right key press koren')
+
+        audio.src = "../audio/Wrong.mp3";
+        audio.play();
 
         const currentLife = getTextElementValueById('current-life');
         const updatedLife = currentLife - 1;
@@ -106,6 +118,8 @@ function continueGame(){
 
 function play(){
     // hide everything and show only the playground
+
+    isGameOn = true;
     hiddenElementById('home-screen');
     hiddenElementById('final-score');
     showElementById('play-ground');
@@ -131,4 +145,6 @@ function gameOver(){
     const currentAlphabet = getElementTextById('current-alphabet');
     // console.log(currentAlphabet);
     removeBackgroundColorById(currentAlphabet);
+
+    isGameOn = false;
 }
